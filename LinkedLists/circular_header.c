@@ -46,28 +46,35 @@ head->next=new;
 void delete_first()
 {
 struct node *t1=head->next;
-struct node *t2=head->next;
-while(t2->next!=head->next)
-t2=t2->next;
+if(t1!=NULL)
+{
+while(t1->next!=head->next) 
+  t1=t1->next;
 head->next=(head->next->next);
-t2->next=head->next;
-free(t1);
+free(t1->next);
+t1->next=head->next;
 (head->data)--;
+}
+else
+  printf("Underflow\n")
 }
 
 //Delete the last node
 void delete_last()
 {
 struct node *t1=head->next;
-struct node *t2=head->next;
-while(t2->next!=head->next)
+if(t1!=NULL)
 {
-t1=t2;
-t2=t2->next;
+while(t1->next->next!=head->next)
+{
+t1=t1->next;
 }
-t1->next=t2->next;
-free(t2);
+free(t1->next);
+t1->next=head->next;
 (head->data)--;
+}
+else
+  printf("Underflow\n");
 }
 
 //Display
